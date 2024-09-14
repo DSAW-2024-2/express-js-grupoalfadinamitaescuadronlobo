@@ -1,7 +1,6 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const port = 3000;
 
 app.use(cors());
 
@@ -25,7 +24,7 @@ const users = [
 app.get('/user-info/:id', (req, res) => {
     const id = parseInt(req.params.id);
     if (id < 1 || id > 2) {
-        return res.status(400).json({ error: "El ID no es valido, debe ser 1 o 2." });
+        return res.status(400).json({ error: "El ID no es válido, debe ser 1 o 2." });
     }
     const user = users.find(user => user.id === id);
     if (user) {
@@ -35,6 +34,4 @@ app.get('/user-info/:id', (req, res) => {
     }
 });
 
-app.listen(port, () => {
-    console.log(`Servidor escuchando en http://localhost:${port}`);
-});
+module.exports = app;
